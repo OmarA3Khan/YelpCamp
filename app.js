@@ -11,12 +11,22 @@ var seedDB = require("./seeds");
 var Comment = require("./models/comment");
 var User = require("./models/user");
 
+require('dotenv').config();
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_V3";
+// mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
+try {
+    var db = mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
+    console.log('success connection at :'+ url);
+}
+catch (error) {
+    console.log('Error connection: ' + error);
+}
+
 // Requiring Routes here
 var commentRoutes     = require("./routes/comments");
 var campgroundRoutes  = require("./routes/campgrounds");
 var	indexRoutes       = require("./routes/index");
 
-mongoose.connect(process.env.DATABASEURL || 'mongodb://localhost:27017/yelp_camp_V3', { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
