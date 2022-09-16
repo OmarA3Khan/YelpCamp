@@ -36,7 +36,7 @@ app.use(flash());
 
 // === PASSPORT CONFIG ===== //
 app.use(require("express-session")({
-	secret: "Rocoblet is Real",
+	secret: process.env.PASSPORT_secret,
 	resave: false,
 	saveUninitialized: false
 }));
