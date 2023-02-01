@@ -30,6 +30,7 @@ npm install
 * MongoDB - The database for modern applications
 * Mongoose - Elegant MongoDB object modeling for Node.js
 * ejs - Embedded JavaScript templating
+
 Create a .env file (or just export manually in the terminal) in the root of the project and add the following:
 
 ```
